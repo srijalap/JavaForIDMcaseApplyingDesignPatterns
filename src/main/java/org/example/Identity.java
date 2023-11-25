@@ -7,13 +7,17 @@ public class Identity {
     private String last;
 
     public Identity(String firstName, String lastName, String organization) {
+        this.first = firstName;
+        this.last = lastName;
+
+        this.displayName = first + " " + last;
+        if (!organization.isEmpty()) {
+            this.displayName += " (" + organization + ")";
+        }
     }
 
-    // Constructors, getters, and setters for other fields
+    // Getters and setters for other fields
 
-    public Integer getId() {
-        return id;
-    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -23,5 +27,7 @@ public class Identity {
         return displayName;
     }
 
-    // Other methods...
+    public String getContactDetails() {
+        return "Contact: " + getDisplayName();
+    }
 }
