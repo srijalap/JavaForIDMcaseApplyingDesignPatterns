@@ -10,8 +10,10 @@ public class IdmService {
     }
 
 
-    public Identity createIdentity(String firstName, String lastName, String organization) {
-        Identity identity = new Identity(firstName, lastName, organization);
+    public Identity createIdentity(String firstName, String lastName, String organization,Integer id, String organizationEmail,
+                                   String[] provisionedServices, String identityStatus){
+        Identity identity = new Identity(firstName, lastName, id,
+                organizationEmail, provisionedServices, identityStatus);
         identity.setId(idCounter);
         identityHashMap.put(idCounter, identity);
 
@@ -23,6 +25,9 @@ public class IdmService {
     }
     public void setContactService(ContactService contactService) {
         this.contactService = contactService;
+    }
+    public Identity getIdentityById(Integer id) {
+        return identityHashMap.get(id);
     }
 }
 
